@@ -69,6 +69,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvScreenName;
         TextView tvName;
         TextView tvDate;
+        TextView tvRelTime;
+        String formattedRelTime;
+        String formattedDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,13 +80,17 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvSceenName);
             tvName = itemView.findViewById(R.id.tvName);
             tvDate = itemView.findViewById(R.id.tvDate);
+            tvRelTime = itemView.findViewById(R.id.tvRelTime);
         }
 
         public void bind(final Tweet tweet){
             tvBody.setText(tweet.body);
             tvScreenName.setText(String.format("@%s", tweet.user.screenName));
             tvName.setText(tweet.user.name);
-            tvDate.setText(String.format("%s%s%s", tweet.createdAt.substring(8, 11), tweet.createdAt.substring(4, 8), tweet.createdAt.substring(tweet.createdAt.length() - 4, tweet.createdAt.length())));
+            formattedRelTime = TimeFormatter.getTimeDifference(tweet.createdAt);
+            tvRelTime.setText(String.format("%s ago", formattedRelTime));
+            formattedDate = TimeFormatter.getDateStamp(tweet.createdAt);
+            tvDate.setText(formattedDate);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
 
             /*

@@ -7,5 +7,6 @@
     <string name="intent_host">cprest</string>
 
     <string name="profile_image">Profile Image</string>
+    <string name="twitter_logo">Twitter Logo</string>
 
 </resources>

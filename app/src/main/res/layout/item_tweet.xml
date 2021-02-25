@@ -27,7 +27,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="5dp"
-        android:layout_toStartOf="@+id/ivLogo"
+        android:layout_toStartOf="@+id/tvRelTime"
         android:layout_toEndOf="@+id/ivProfileImage"
         tools:text="\@Joe Smith" />
 
@@ -61,6 +61,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="0dp"
+        android:contentDescription="@string/twitter_logo"
         app:srcCompat="@drawable/twitter_logo" />
 
     <TextView
@@ -104,5 +105,18 @@
         android:layout_toEndOf="@+id/btnRetweet"
         android:background="@drawable/ic_vector_heart_stroke"
         android:backgroundTint="@color/medium_gray" />
+
+    <TextView
+        android:id="@+id/tvRelTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvName"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
+        android:layout_toStartOf="@+id/ivLogo"
+        android:textAlignment="textEnd"
+        android:textColor="@color/light_gray"
+        android:textSize="12sp"
+        tools:text="28m ago" />
 
 </RelativeLayout>
