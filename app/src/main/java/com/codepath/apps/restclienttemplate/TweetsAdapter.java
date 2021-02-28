@@ -88,7 +88,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName.setText(String.format("@%s", tweet.user.screenName));
             tvName.setText(tweet.user.name);
             formattedRelTime = TimeFormatter.getTimeDifference(tweet.createdAt);
-            if (formattedRelTime == "Just now"){
+            if (formattedRelTime.equals("Just now")){
                 tvRelTime.setText(String.format("%s", formattedRelTime));
             }else{
                 tvRelTime.setText(String.format("%s ago", formattedRelTime));
@@ -97,7 +97,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvDate.setText(formattedDate);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
 
-            /*
             // Register click listener on the tweet body
             tvBody.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,7 +108,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                     context.startActivity(i);
                 }
             });
-            */
 
         }
     }

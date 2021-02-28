@@ -28,6 +28,9 @@ public class User {
     @ColumnInfo
     public String profileImageUrl;
 
+    @ColumnInfo
+    public String location;
+
     // empty constructor needed by the Parceler Library
     public User(){}
 
@@ -37,6 +40,7 @@ public class User {
         user.name = jsonObject.getString("name");
         user.screenName = jsonObject.getString("screen_name");
         user.profileImageUrl = jsonObject.getString("profile_image_url_https");
+        user.location = jsonObject.getString("location");
         return user;
     }
 

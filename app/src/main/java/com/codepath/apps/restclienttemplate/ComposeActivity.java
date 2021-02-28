@@ -2,12 +2,16 @@ package com.codepath.apps.restclienttemplate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -21,10 +25,11 @@ import okhttp3.Headers;
 public class ComposeActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeActivity";
-    public static final int MAX_TWEET_LENGTH = 140;
+    public static final int MAX_TWEET_LENGTH = 280;
 
     EditText etCompose;
     Button btnTweet;
+    TextView tvCharCount;
 
     TwitterClient client;
 
@@ -37,6 +42,9 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+        tvCharCount = findViewById(R.id.tvCharCount);
+
+        tvCharCount.setText(String.format("%d / %d", 0 , MAX_TWEET_LENGTH));
 
         // Set click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +82,28 @@ public class ComposeActivity extends AppCompatActivity {
                     }
                 });
             }
+        });
+
+        etCompose.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.length() > MAX_TWEET_LENGTH){
+                    tvCharCount.setTextColor(getResources().getColor(R.color.red));
+                    tvCharCount.setText(String.format("- %d", s.length() - MAX_TWEET_LENGTH));
+                    btnTweet.setEnabled(false);
+                }else{
+                    tvCharCount.setTextColor(getResources().getColor(R.color.medium_gray));
+                    tvCharCount.setText(String.format("%d / %d", s.length() , MAX_TWEET_LENGTH));
+                    btnTweet.setEnabled(true);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) { }
         });
     }
 }

@@ -2,6 +2,7 @@
 
 <resources>
     <color name="black">#ff444444</color>
+    <color name="white">#ffeeeeee</color>
     <color name="medium_green">#ff17bf63</color>
     <color name="medium_gray">#ffaab8c2</color>
     <color name="medium_gray_30">#4daab8c2</color>
@@ -10,6 +11,7 @@
     <color name="medium_red">#ffe0245e</color>
     <color name="medium_red_30">#4de0245e</color>
     <color name="medium_red_50">#80e0245e</color>
+    <color name="red">#ffee2222</color>
     <color name="twitter_blue">#ff1da1f2</color>
     <color name="twitter_blue_30">#4d1da1f2</color>
     <color name="twitter_blue_50">#801da1f2</color>
